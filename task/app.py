@@ -1,13 +1,4 @@
-from task._constants import API_KEY
-from task.chat.chat_completion_client import DialChatCompletionClient
-from task.embeddings.embeddings_client import DialEmbeddingsClient
-from task.embeddings.text_processor import TextProcessor, SearchMode
-from task.models.conversation import Conversation
-from task.models.message import Message
-from task.models.role import Role
-
-
-#TODO:
+# TODO:
 # Create system prompt with info that it is RAG powered assistant.
 # Explain user message structure (firstly will be provided RAG context and the user question).
 # Provide instructions that LLM should use RAG Context when answer on User Question, will restrict LLM to answer
@@ -15,13 +6,13 @@ from task.models.role import Role
 SYSTEM_PROMPT = """
 """
 
-#TODO:
+# TODO:
 # Provide structured system prompt, with RAG Context and User Question sections.
 USER_PROMPT = """
 """
 
 
-#TODO:
+# TODO:
 # - create embeddings client with 'text-embedding-3-small-1' model
 # - create chat completion client
 # - create text processor, DB config: {'host': 'localhost','port': 5433,'database': 'vectordb','user': 'postgres','password': 'postgres'}
@@ -32,7 +23,6 @@ USER_PROMPT = """
 # - perform augmentation
 # - perform generation
 # - it should run in `while` loop (since it is console chat)
-
 
 
 # TODO:

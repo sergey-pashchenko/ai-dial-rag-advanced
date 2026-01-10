@@ -1,0 +1,8 @@
+__pycache__/
+/.dir-locals.el
+/.mypy_cache/
+/.python-version
+/.ruff_cache/
+/.venv/
+/requirements-all.txt
+/requirements-dev.txt

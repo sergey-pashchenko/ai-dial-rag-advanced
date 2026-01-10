@@ -9,7 +9,4 @@ class Message:
     content: str
 
     def to_dict(self) -> dict[str, str]:
-        return {
-            "role": self.role.value,
-            "content": self.content
-        }
+        return {"role": self.role.value, "content": self.content}

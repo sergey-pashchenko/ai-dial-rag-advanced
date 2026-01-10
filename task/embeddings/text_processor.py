@@ -1,10 +1,8 @@
 from enum import StrEnum
 
 import psycopg2
-from psycopg2.extras import RealDictCursor
 
 from task.embeddings.embeddings_client import DialEmbeddingsClient
-from task.utils.text import chunk_text
 
 
 class SearchMode(StrEnum):
@@ -22,14 +20,14 @@ class TextProcessor:
     def _get_connection(self):
         """Get database connection"""
         return psycopg2.connect(
-            host=self.db_config['host'],
-            port=self.db_config['port'],
-            database=self.db_config['database'],
-            user=self.db_config['user'],
-            password=self.db_config['password']
+            host=self.db_config["host"],
+            port=self.db_config["port"],
+            database=self.db_config["database"],
+            user=self.db_config["user"],
+            password=self.db_config["password"],
         )
 
-    #TODO:
+    # TODO:
     # provide method `process_text_file` that will:
     #   - apply file name, chunk size, overlap, dimensions and bool of the table should be truncated
     #   - truncate table with vectors if needed
@@ -39,10 +37,7 @@ class TextProcessor:
     #       hint 1: embeddings should be saved as string list
     #       hint 2: embeddings string list should be casted to vector ({embeddings}::vector)
 
-
-
-
-    #TODO:
+    # TODO:
     # provide method `search` that will:
     #   - apply search mode, user request, top k for search, min score threshold and dimensions
     #   - generate embeddings from user request
@@ -52,4 +47,3 @@ class TextProcessor:
     #     hint 3: You need to extract `text` from `vectors` table
     #     hint 4: You need to filter distance in WHERE clause
     #     hint 5: To get top k use `limit`
-

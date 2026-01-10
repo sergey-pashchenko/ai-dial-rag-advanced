@@ -1,0 +1,7 @@
+repos:
+- repo: local
+  hooks:
+  - id: fixme
+    name: check for fixmes
+    entry: pre-commit-fixme.sh
+    language: script

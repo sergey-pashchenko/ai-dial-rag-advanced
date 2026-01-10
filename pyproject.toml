@@ -1,0 +1,13 @@
+[tool]
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+pydocstyle.convention = "google"
+
+[tool.ruff.lint.isort]
+force-single-line = true
+force-sort-within-sections = true
+
+[tool.ruff.lint.mccabe]
+max-complexity = 18

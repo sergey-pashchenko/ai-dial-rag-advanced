@@ -1,11 +1,7 @@
-import json
-
-import requests
-
-DIAL_EMBEDDINGS = 'https://ai-proxy.lab.epam.com/openai/deployments/{model}/embeddings'
+DIAL_EMBEDDINGS = "https://ai-proxy.lab.epam.com/openai/deployments/{model}/embeddings"
 
 
-#TODO:
+# TODO:
 # ---
 # https://dialx.ai/dial_api#operation/sendEmbeddingsRequest
 # ---
@@ -14,8 +10,8 @@ DIAL_EMBEDDINGS = 'https://ai-proxy.lab.epam.com/openai/deployments/{model}/embe
 # - create method `get_embeddings` that will generate embeddings for input list (don't forget about dimensions)
 #   with Embedding model and return back a dict with indexed embeddings (key is index from input list and value vector list)
 
-class DialEmbeddingsClient:
-    ...
+
+class DialEmbeddingsClient: ...
 
 
 # Hint:

@@ -3,7 +3,7 @@ import requests
 from task.models.message import Message
 from task.models.role import Role
 
-DIAL_CHAT_COMPLETION = 'https://ai-proxy.lab.epam.com/openai/deployments/{model}/chat/completions'
+DIAL_CHAT_COMPLETION = "https://ai-proxy.lab.epam.com/openai/deployments/{model}/chat/completions"
 
 
 class DialChatCompletionClient:
@@ -14,23 +14,16 @@ class DialChatCompletionClient:
         if not api_key or api_key.strip() == "":
             raise ValueError("API key cannot be null or empty")
 
-        self._endpoint = DIAL_CHAT_COMPLETION.format(
-            model=deployment_name
-        )
+        self._endpoint = DIAL_CHAT_COMPLETION.format(model=deployment_name)
         self._api_key = api_key
 
-    def get_completion(
-            self, messages: list[Message],
-            print_request: bool = False,
-            **kwargs
-    ) -> Message:
+    def get_completion(self, messages: list[Message], print_request: bool = False, **kwargs) -> Message:
         if print_request:
-            print(f"Getting completion for `{self._get_messages_str(messages)}` \n\n ---And such parameters: {kwargs}---")
+            print(
+                f"Getting completion for `{self._get_messages_str(messages)}` \n\n ---And such parameters: {kwargs}---"
+            )
 
-        headers = {
-            "api-key": self._api_key,
-            "Content-Type": "application/json"
-        }
+        headers = {"api-key": self._api_key, "Content-Type": "application/json"}
         request_data = {
             "messages": [msg.to_dict() for msg in messages],
             **kwargs,
