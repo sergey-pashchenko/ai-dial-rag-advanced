@@ -73,7 +73,9 @@ def run_console_chat():
         file_name="task/embeddings/microwave_manual.txt",
         # chunk_size=500,
         # overlap=50,
+        # NOTE to change to non-default 1536, tweak init-scripsts/init_db.sql
         # dimensions=1536,
+        dimensions=384,
         truncate_table=True,
     )
 
@@ -83,13 +85,25 @@ def run_console_chat():
             print("Exiting chat. Goodbye!")
             break
 
+        # # Additional task 2: Switch to different embeddings client
+        # text_processor.embeddings_client = DialEmbeddingsClient(deployment_name="text-embedding-005", api_key=API_KEY)
+        # # Result: not finding relevant anymore (due to the different model producing different embedding vectors)
+
         # Retrieve context from the database based on user input
         context = text_processor.search(
             search_mode=SearchMode.COSINE_DISTANCE,
             user_request=user_input,
             top_k=3,
-            min_score_threshold=0.5,
-            dimensions=1536,
+            # min_score_threshold=0.5,
+            min_score_threshold=0.99,
+            # dimensions=1536,
+            dimensions=384,
+            # # Additional task 1:
+            # dimensions=385,
+            # # or
+            # dimensions=383,
+            # # causes
+            # #  psycopg2.errors.DataException: different vector dimensions 384 and 383
         )
 
         # Prepare the augmented user prompt
